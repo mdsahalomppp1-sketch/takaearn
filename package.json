@@ -1,0 +1,24 @@
+{
+  "name": "takaearn",
+  "version": "1.0.0",
+  "description": "TakaEarn - Telegram Web App Earning Platform",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "npx http-server",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": [
+    "telegram",
+    "web-app",
+    "earning",
+    "tasks",
+    "referral"
+  ],
+  "author": "TakaEarn Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/takaearn.git"
+  }
+}
