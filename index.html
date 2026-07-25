@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TakaEarn - Earn Money Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <i class="fas fa-coins"></i>
+                    <h1>TakaEarn</h1>
+                </div>
+                <div class="user-info">
+                    <span id="userName">User</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Notice Banner -->
+        <div id="noticeBanner" class="notice-banner"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Page -->
+            <div id="homePage" class="page active">
+                <!-- Balance Card -->
+                <div class="balance-card">
+                    <div class="balance-info">
+                        <span class="balance-label">Total Balance</span>
+                        <h2 class="balance-amount">
+                            <i class="fas fa-taka-sign"></i>
+                            <span id="totalBalance">0.00</span>
+                        </h2>
+                    </div>
+                    <div class="balance-stats">
+                        <div class="stat">
+                            <span class="stat-value" id="taskEarnings">0.00</span>
+                            <span class="stat-label">Tasks</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="referralEarnings">0.00</span>
+                            <span class="stat-label">Referrals</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="quick-stats">
+                    <div class="stat-box">
+                        <i class="fas fa-tasks"></i>
+                        <div>
+                            <span class="stat-number" id="completedTasks">0</span>
+                            <span class="stat-text">Tasks Done</span>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <span class="stat-number" id="totalReferrals">0</span>
+                            <span class="stat-text">Referrals</span>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-arrow-down"></i>
+                        <div>
+                            <span class="stat-number" id="totalWithdrawn">0</span>
+                            <span class="stat-text">Withdrawn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Banner -->
+                <div id="bannerSlider" class="banner-slider">
+                    <img id="bannerImage" src="assets/banner.png" alt="Banner" class="banner-image">
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="activity-section">
+                    <h3>Recent Activity</h3>
+                    <div id="recentActivity" class="activity-list">
+                        <p class="no-data">No activity yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tasks Page -->
+            <div id="tasksPage" class="page">
+                <div class="page-header">
+                    <h2>Daily Tasks</h2>
+                    <span class="task-reward">+10 BDT per task</span>
+                </div>
+
+                <div class="filter-tabs">
+                    <button class="tab-btn active" data-filter="all">All</button>
+                    <button class="tab-btn" data-filter="available">Available</button>
+                    <button class="tab-btn" data-filter="completed">Completed</button>
+                </div>
+
+                <div id="tasksList" class="tasks-list">
+                    <p class="no-data">No tasks available</p>
+                </div>
+            </div>
+
+            <!-- Referral Page -->
+            <div id="referPage" class="page">
+                <div class="page-header">
+                    <h2>Referral Program</h2>
+                    <span class="referral-reward">+20 BDT per referral</span>
+                </div>
+
+                <!-- Referral Code Section -->
+                <div class="referral-code-box">
+                    <h3>Your Referral Code</h3>
+                    <div class="code-display">
+                        <input type="text" id="referralCode" class="code-input" readonly>
+                        <button id="copyCodeBtn" class="copy-btn">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <p class="code-hint">Share this code with friends to earn 20 BDT per successful referral</p>
+                </div>
+
+                <!-- Share Methods -->
+                <div class="share-section">
+                    <h3>Share Via</h3>
+                    <div class="share-buttons">
+                        <button id="shareWhatsApp" class="share-btn whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </button>
+                        <button id="shareTelegram" class="share-btn telegram">
+                            <i class="fab fa-telegram"></i> Telegram
+                        </button>
+                        <button id="shareFacebook" class="share-btn facebook">
+                            <i class="fab fa-facebook"></i> Facebook
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Referral Stats -->
+                <div class="referral-stats">
+                    <h3>Your Referrals</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-num" id="pendingReferrals">0</span>
+                            <span class="stat-desc">Pending</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num" id="activeReferrals">0</span>
+                            <span class="stat-desc">Active</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num" id="referralEarned">0.00</span>
+                            <span class="stat-desc">Earned</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Referral List -->
+                <div class="referral-list-section">
+                    <h3>Referral Details</h3>
+                    <div id="referralsList" class="referral-details">
+                        <p class="no-data">No referrals yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Withdraw Page -->
+            <div id="withdrawPage" class="page">
+                <div class="page-header">
+                    <h2>Withdraw Money</h2>
+                </div>
+
+                <!-- Withdrawal Status -->
+                <div id="withdrawalStatus" class="status-message"></div>
+
+                <!-- Withdrawal Info -->
+                <div class="withdrawal-info">
+                    <div class="info-item">
+                        <span class="info-label">Available Balance</span>
+                        <span class="info-value" id="availableBalance">0.00 BDT</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Minimum Withdrawal</span>
+                        <span class="info-value">200 BDT</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Required Referrals</span>
+                        <span class="info-value" id="requiredReferrals">5</span>
+                    </div>
+                </div>
+
+                <!-- Withdrawal Form -->
+                <div class="withdrawal-form">
+                    <div class="form-group">
+                        <label for="withdrawAmount">Amount (BDT)</label>
+                        <input type="number" id="withdrawAmount" placeholder="Enter amount" min="200" step="10">
+                        <small id="amountError" class="error-text"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="withdrawMethod">Payment Method</label>
+                        <select id="withdrawMethod">
+                            <option value="">Select payment method</option>
+                            <option value="bkash">bKash</option>
+                            <option value="nagad">Nagad</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="withdrawPhoneNumber">Phone Number</label>
+                        <input type="tel" id="withdrawPhoneNumber" placeholder="Enter your phone number">
+                        <small id="phoneError" class="error-text"></small>
+                    </div>
+
+                    <button id="submitWithdrawBtn" class="btn btn-primary btn-full">
+                        Request Withdrawal
+                    </button>
+                </div>
+
+                <!-- Withdrawal History -->
+                <div class="withdrawal-history-section">
+                    <h3>Withdrawal History</h3>
+                    <div id="withdrawalHistory" class="history-list">
+                        <p class="no-data">No withdrawal history</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Page -->
+            <div id="profilePage" class="page">
+                <div class="page-header">
+                    <h2>Profile</h2>
+                </div>
+
+                <!-- User Profile Card -->
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h3 id="profileName">Loading...</h3>
+                        <p id="profileId">ID: --</p>
+                        <p id="profileJoinDate">Joined: --</p>
+                    </div>
+                </div>
+
+                <!-- Profile Stats -->
+                <div class="profile-stats">
+                    <div class="profile-stat">
+                        <i class="fas fa-tasks"></i>
+                        <div>
+                            <span class="stat-label">Tasks Completed</span>
+                            <span class="stat-value" id="profileTasksCompleted">0</span>
+                        </div>
+                    </div>
+                    <div class="profile-stat">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <span class="stat-label">Active Referrals</span>
+                            <span class="stat-value" id="profileActiveReferrals">0</span>
+                        </div>
+                    </div>
+                    <div class="profile-stat">
+                        <i class="fas fa-wallet"></i>
+                        <div>
+                            <span class="stat-label">Total Earned</span>
+                            <span class="stat-value" id="profileTotalEarned">0.00</span>
+                        </div>
+                    </div>
+                    <div class="profile-stat">
+                        <i class="fas fa-arrow-down"></i>
+                        <div>
+                            <span class="stat-label">Total Withdrawn</span>
+                            <span class="stat-value" id="profileTotalWithdrawn">0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Settings -->
+                <div class="account-settings">
+                    <h3>Account Settings</h3>
+                    <div class="settings-list">
+                        <div class="settings-item">
+                            <span>Telegram Account</span>
+                            <span id="telegramStatus" class="status-badge status-active">Connected</span>
+                        </div>
+                        <div class="settings-item">
+                            <span>Account Status</span>
+                            <span id="accountStatus" class="status-badge status-active">Active</span>
+                        </div>
+                        <div class="settings-item">
+                            <span>Verification</span>
+                            <span id="verificationStatus" class="status-badge status-active">Verified</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logout Button -->
+                <button id="logoutBtn" class="btn btn-danger btn-full">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-page="homePage">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </button>
+            <button class="nav-btn" data-page="tasksPage">
+                <i class="fas fa-tasks"></i>
+                <span>Tasks</span>
+            </button>
+            <button class="nav-btn" data-page="referPage">
+                <i class="fas fa-share-nodes"></i>
+                <span>Refer</span>
+            </button>
+            <button class="nav-btn" data-page="withdrawPage">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>Withdraw</span>
+            </button>
+            <button class="nav-btn" data-page="profilePage">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </button>
+        </nav>
+
+        <!-- Modal for Task Details -->
+        <div id="taskModal" class="modal">
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <h3 id="taskModalTitle">Task Details</h3>
+                <p id="taskModalDescription"></p>
+                <div class="task-modal-details">
+                    <p><strong>Reward:</strong> <span id="taskModalReward">10 BDT</span></p>
+                    <p><strong>Status:</strong> <span id="taskModalStatus">Available</span></p>
+                    <p id="taskModalUrl" style="display: none;"><strong>URL:</strong> <a id="taskLink" target="_blank" href="">Open Link</a></p>
+                </div>
+                <div class="modal-actions">
+                    <button id="completeTaskBtn" class="btn btn-primary btn-full">Complete Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Telegram Web App SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
